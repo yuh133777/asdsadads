@@ -1,0 +1,89 @@
+-- Decompiler will be improved VERY SOON!
+-- Decompiled with Konstant V2.1, a fast Luau decompiler made in Luau by plusgiant5 (https://discord.gg/wyButjTMhM)
+-- Decompiled on 2025-03-21 21:05:26
+-- Luau version 6, Types version 3
+-- Time taken: 0.002059 seconds
+
+local Constants_upvr = require(script.Parent.Parent.Resources.Constants)
+local RbxAnalyticsService_upvr = game:GetService("RbxAnalyticsService")
+local UserInputService_upvr = game:GetService("UserInputService")
+local InputTypeMap_upvr = Constants_upvr.InputTypeMap
+return function(arg1, arg2, arg3, arg4, arg5) -- Line 9
+	--[[ Upvalues[4]:
+		[1]: RbxAnalyticsService_upvr (readonly)
+		[2]: UserInputService_upvr (readonly)
+		[3]: Constants_upvr (readonly)
+		[4]: InputTypeMap_upvr (readonly)
+	]]
+	if arg5 == nil then
+	end
+	if arg4 == true then
+	end
+	if not (function() -- Line 15, Named "reportSettingsForAnalytics"
+		--[[ Upvalues[1]:
+			[1]: UserInputService_upvr (copied, readonly)
+		]]
+		-- KONSTANTWARNING: Variable analysis failed. Output will have some incorrect variable assignments
+		local GameSettings = UserSettings().GameSettings
+		local module = {}
+		local var8
+		if UserInputService_upvr.TouchEnabled then
+			var8 = GameSettings.TouchCameraMovementMode
+			module.camera_mode_touch = tostring(var8)
+		else
+			var8 = GameSettings.ComputerCameraMovementMode
+			module.camera_mode_desktop = tostring(var8)
+		end
+		var8 = UserInputService_upvr
+		if var8.TouchEnabled then
+			var8 = GameSettings.TouchMovementMode
+			module.movement_mode_touch = tostring(var8)
+		else
+			var8 = GameSettings.ComputerMovementMode
+			module.movement_mode_desktop = tostring(var8)
+		end
+		var8 = UserInputService_upvr
+		if var8.MouseEnabled then
+			if GameSettings.ControlMode ~= Enum.ControlMode.MouseLockSwitch then
+				var8 = false
+			else
+				var8 = true
+			end
+			module.shift_lock_enabled = tostring(var8)
+		end
+		var8 = UserInputService_upvr
+		if var8.GamepadEnabled and GameSettings.IsUsingGamepadCameraSensitivity then
+			var8 = "%.2f"
+			module.camera_sensitivity_gamepad = string.format(var8, GameSettings.GamepadCameraSensitivity)
+		end
+		var8 = UserInputService_upvr
+		if var8.MouseEnabled then
+			var8 = "%.2f"
+			module.camera_sensitivity_mouse = string.format(var8, GameSettings.MouseSensitivityFirstPerson.X)
+		end
+		var8 = GameSettings.CameraYInverted
+		module.camera_y_inverted = tostring(var8)
+		var8 = GameSettings.PerformanceStatsVisible
+		module.show_performance_stats = tostring(var8)
+		var8 = math.floor(GameSettings.MasterVolume * 10 + 0.5)
+		module.volume = tostring(var8)
+		var8 = settings().Rendering.QualityLevel
+		module.gfx_quality_level = tostring(var8)
+		var8 = GameSettings:InFullScreen()
+		module.fullscreen_enabled = tostring(var8)
+		var8 = GameSettings.OnScreenProfilerEnabled
+		module.microprofiler_enabled = tostring(var8)
+		var8 = GameSettings.MicroProfilerWebServerEnabled
+		module.microprofiler_webserver_enabled = tostring(var8)
+		return module
+	end)() then
+		local tbl = {}
+	end
+	tbl.universeid = tostring(game.GameId)
+	local var10 = InputTypeMap_upvr[UserInputService_upvr:GetLastInputType()]
+	if not var10 then
+		var10 = UserInputService_upvr:GetLastInputType()
+	end
+	tbl.inputDevice = tostring(var10)
+	RbxAnalyticsService_upvr:SetRBXEventStream(Constants_upvr.AnalyticsTargetName, Constants_upvr.AnalyticsInGameMenuName, Constants_upvr.AnalyticsSettingsChangeName, tbl)
+end

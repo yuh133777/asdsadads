@@ -1,0 +1,48 @@
+-- Decompiler will be improved VERY SOON!
+-- Decompiled with Konstant V2.1, a fast Luau decompiler made in Luau by plusgiant5 (https://discord.gg/wyButjTMhM)
+-- Decompiled on 2025-03-21 21:03:17
+-- Luau version 6, Types version 3
+-- Time taken: 0.000820 seconds
+
+local Parent = script.Parent.Parent
+local Constants_upvr = require(Parent.Resources.Constants)
+local tbl_upvr = {Constants_upvr.ReportDialogKey}
+local GuiService_upvr = game:GetService("GuiService")
+local SetMenuOpen_upvr = require(Parent.Actions.SetMenuOpen)
+local SetCurrentPage_upvr = require(Parent.Actions.SetCurrentPage)
+local SendAnalytics_upvr = require(Parent.Utility.SendAnalytics)
+return function(arg1, arg2) -- Line 14
+	--[[ Upvalues[6]:
+		[1]: Constants_upvr (readonly)
+		[2]: tbl_upvr (readonly)
+		[3]: GuiService_upvr (readonly)
+		[4]: SetMenuOpen_upvr (readonly)
+		[5]: SetCurrentPage_upvr (readonly)
+		[6]: SendAnalytics_upvr (readonly)
+	]]
+	return function(arg1_2) -- Line 15
+		--[[ Upvalues[8]:
+			[1]: arg2 (read and write)
+			[2]: Constants_upvr (copied, readonly)
+			[3]: tbl_upvr (copied, readonly)
+			[4]: GuiService_upvr (copied, readonly)
+			[5]: SetMenuOpen_upvr (copied, readonly)
+			[6]: SetCurrentPage_upvr (copied, readonly)
+			[7]: SendAnalytics_upvr (copied, readonly)
+			[8]: arg1 (readonly)
+		]]
+		if not arg2 then
+			arg2 = Constants_upvr.defaultPageKey
+		end
+		if not table.find(tbl_upvr, arg2) then
+			if arg2 ~= Constants_upvr.InitalPageKey then
+				GuiService_upvr:SetMenuIsOpen(true, "InGameMenu")
+			end
+			arg1_2:dispatch(SetMenuOpen_upvr(true))
+			arg1_2:dispatch(SetCurrentPage_upvr(arg2))
+		end
+		local tbl = {}
+		tbl.source = arg1
+		SendAnalytics_upvr(Constants_upvr.AnalyticsMenuOpenName, Constants_upvr.AnalyticsMenuActionName, tbl)
+	end
+end
