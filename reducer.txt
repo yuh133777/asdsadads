@@ -1,0 +1,215 @@
+-- Decompiler will be improved VERY SOON!
+-- Decompiled with Konstant V2.1, a fast Luau decompiler made in Luau by plusgiant5 (https://discord.gg/wyButjTMhM)
+-- Decompiled on 2025-03-21 21:08:33
+-- Luau version 6, Types version 3
+-- Time taken: 0.004230 seconds
+
+local Cryo_upvr = require(game:GetService("CorePackages").Packages.InGameMenuDependencies).Cryo
+local Parent = script.Parent
+local Constants_upvr = require(Parent.Resources.Constants)
+local tbl_upvr = {
+	[require(Parent.Actions.SetMenuOpen).name] = function(arg1, arg2) -- Line 39
+		--[[ Upvalues[1]:
+			[1]: Cryo_upvr (readonly)
+		]]
+		local var6
+		if not arg2.isMenuOpen then
+			var6 = false
+		end
+		local module_2 = {}
+		local isMenuOpen = arg2.isMenuOpen
+		module_2.isMenuOpen = isMenuOpen
+		module_2.isMainPageMoreMenuOpen = var6
+		if arg1.isMenuOpen ~= arg2.isMenuOpen then
+			isMenuOpen = 1
+		else
+			isMenuOpen = nil
+		end
+		module_2.currentZone = isMenuOpen
+		return Cryo_upvr.Dictionary.join(arg1, module_2)
+	end;
+	[require(Parent.Actions.SetMainPageMoreMenuOpen).name] = function(arg1, arg2) -- Line 52
+		--[[ Upvalues[1]:
+			[1]: Cryo_upvr (readonly)
+		]]
+		return Cryo_upvr.Dictionary.join(arg1, {
+			isMainPageMoreMenuOpen = arg2.isMainPageMoreMenuOpen;
+		})
+	end;
+	[require(Parent.Actions.StartLeavingGame).name] = function(arg1, arg2) -- Line 57
+		--[[ Upvalues[1]:
+			[1]: Cryo_upvr (readonly)
+		]]
+		return Cryo_upvr.Dictionary.join(arg1, {
+			leavingGame = true;
+		})
+	end;
+	[require(Parent.Actions.CancelLeavingGame).name] = function(arg1, arg2) -- Line 62
+		--[[ Upvalues[1]:
+			[1]: Cryo_upvr (readonly)
+		]]
+		return Cryo_upvr.Dictionary.join(arg1, {
+			leavingGame = false;
+		})
+	end;
+	[require(Parent.Actions.SetCurrentPage).name] = function(arg1, arg2) -- Line 67
+		--[[ Upvalues[2]:
+			[1]: Cryo_upvr (readonly)
+			[2]: Constants_upvr (readonly)
+		]]
+		local module = {
+			menuPage = arg2.newPage;
+		}
+		local var17 = false
+		module.isMainPageMoreMenuOpen = var17
+		if arg2.newPage == Constants_upvr.InitalPageKey then
+			var17 = 0
+		else
+			var17 = 1
+		end
+		module.currentZone = var17
+		return Cryo_upvr.Dictionary.join(arg1, module)
+	end;
+	[require(Parent.Actions.SetControlLayout).name] = function(arg1, arg2) -- Line 75
+		--[[ Upvalues[1]:
+			[1]: Cryo_upvr (readonly)
+		]]
+		return Cryo_upvr.Dictionary.join(arg1, {
+			controlLayout = arg2.controlLayout;
+		})
+	end;
+	[require(Parent.Actions.SetScreenSize).name] = function(arg1, arg2) -- Line 82
+		--[[ Upvalues[1]:
+			[1]: Cryo_upvr (readonly)
+		]]
+		return Cryo_upvr.Dictionary.join(arg1, {
+			screenSize = arg2.newScreenSize;
+		})
+	end;
+}
+local var34
+local function INLINED() -- Internal function, doesn't exist in bytecode
+	function var34(arg1, arg2) -- Line 87
+		--[[ Upvalues[1]:
+			[1]: Cryo_upvr (readonly)
+		]]
+		return Cryo_upvr.Dictionary.join(arg1, {
+			recording = arg2.recording;
+		})
+	end
+	return var34
+end
+if not require(Parent.Flags.FFlagRecordRecording) or not INLINED() then
+	var34 = nil
+end
+tbl_upvr[require(Parent.Actions.SetVideoRecording).name] = var34
+function var34(arg1, arg2) -- Line 92
+	--[[ Upvalues[1]:
+		[1]: Cryo_upvr (readonly)
+	]]
+	local var26
+	if arg2.respawning then
+		var26 = false
+	else
+		var26 = arg1.isMainPageMoreMenuOpen
+	end
+	return Cryo_upvr.Dictionary.join(arg1, {
+		isMainPageMoreMenuOpen = var26;
+	})
+end
+tbl_upvr[require(Parent.Actions.SetRespawning).name] = var34
+function var34(arg1, arg2) -- Line 104
+	--[[ Upvalues[1]:
+		[1]: Cryo_upvr (readonly)
+	]]
+	return Cryo_upvr.Dictionary.join(arg1, {
+		currentZone = arg2.zone;
+	})
+end
+tbl_upvr[require(Parent.Actions.SetCurrentZone).name] = var34
+function var34(arg1, arg2) -- Line 109
+	--[[ Upvalues[1]:
+		[1]: Cryo_upvr (readonly)
+	]]
+	return Cryo_upvr.Dictionary.join(arg1, {
+		controllerBarHeight = arg2.controllerBarHeight;
+	})
+end
+tbl_upvr[require(Parent.Actions.SetControllerBarHeight).name] = var34
+function var34(arg1, arg2) -- Line 114
+	--[[ Upvalues[1]:
+		[1]: Cryo_upvr (readonly)
+	]]
+	return Cryo_upvr.Dictionary.join(arg1, {
+		controllerBarCount = arg1.controllerBarCount + 1;
+	})
+end
+tbl_upvr[require(Parent.Actions.IncrementControllerBar).name] = var34
+function var34(arg1, arg2) -- Line 119
+	--[[ Upvalues[1]:
+		[1]: Cryo_upvr (readonly)
+	]]
+	return Cryo_upvr.Dictionary.join(arg1, {
+		controllerBarCount = arg1.controllerBarCount - 1;
+	})
+end
+tbl_upvr[require(Parent.Actions.DecrementControllerBar).name] = var34
+local Controls_upvr = require(Parent.Resources.Controls)
+local invites_upvr = require(script.invites)
+local respawn_upvr = require(script.respawn)
+local gameInfo_upvr = require(script.gameInfo)
+local friends_upvr = require(script.friends)
+local displayOptions_upvr = require(script.displayOptions)
+local nativeClosePrompt_upvr = require(script.nativeClosePrompt)
+local navigationReducer_upvr = require(script.navigationReducer)
+local voiceState_upvr = require(Parent.Parent.VoiceChat.Reducers.voiceState)
+local report_upvr = require(script.report)
+return function(arg1, arg2) -- Line 126, Named "reducer"
+	--[[ Upvalues[12]:
+		[1]: Controls_upvr (readonly)
+		[2]: Constants_upvr (readonly)
+		[3]: invites_upvr (readonly)
+		[4]: respawn_upvr (readonly)
+		[5]: gameInfo_upvr (readonly)
+		[6]: friends_upvr (readonly)
+		[7]: displayOptions_upvr (readonly)
+		[8]: nativeClosePrompt_upvr (readonly)
+		[9]: tbl_upvr (readonly)
+		[10]: navigationReducer_upvr (readonly)
+		[11]: voiceState_upvr (readonly)
+		[12]: report_upvr (readonly)
+	]]
+	if arg1 == nil then
+	end
+	local var47 = tbl_upvr[arg2.type]
+	if var47 ~= nil then
+	end
+	local navigationReducer_upvr_result1 = navigationReducer_upvr(var47({
+		controlLayout = Controls_upvr.ControlLayouts.KEYBOARD;
+		isMenuOpen = false;
+		leavingGame = false;
+		currentZone = nil;
+		menuPage = Constants_upvr.defaultPageKey;
+		voiceState = nil;
+		invites = invites_upvr(nil, arg2);
+		respawn = respawn_upvr(nil, arg2);
+		gameInfo = gameInfo_upvr(nil, arg2);
+		friends = friends_upvr(nil, arg2);
+		displayOptions = displayOptions_upvr(nil, arg2);
+		screenSize = Vector2.new(0, 0);
+		recording = false;
+		isMainPageMoreMenuOpen = false;
+		nativeClosePrompt = nativeClosePrompt_upvr(nil, arg2);
+		controllerBarHeight = 0;
+		controllerBarCount = 0;
+	}, arg2), arg2)
+	navigationReducer_upvr_result1.respawn = respawn_upvr(navigationReducer_upvr_result1.respawn, arg2)
+	navigationReducer_upvr_result1.invites = invites_upvr(navigationReducer_upvr_result1.invites, arg2)
+	navigationReducer_upvr_result1.voiceState = voiceState_upvr(navigationReducer_upvr_result1.voiceState, arg2)
+	navigationReducer_upvr_result1.gameInfo = gameInfo_upvr(navigationReducer_upvr_result1.gameInfo, arg2)
+	navigationReducer_upvr_result1.report = report_upvr(navigationReducer_upvr_result1.report, arg2)
+	navigationReducer_upvr_result1.friends = friends_upvr(navigationReducer_upvr_result1.friends, arg2)
+	navigationReducer_upvr_result1.displayOptions = displayOptions_upvr(navigationReducer_upvr_result1.displayOptions, arg2)
+	navigationReducer_upvr_result1.nativeClosePrompt = nativeClosePrompt_upvr(navigationReducer_upvr_result1.nativeClosePrompt, arg2)
+	return navigationReducer_upvr_result1
+end

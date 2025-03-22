@@ -1,0 +1,12 @@
+-- Decompiler will be improved VERY SOON!
+-- Decompiled with Konstant V2.1, a fast Luau decompiler made in Luau by plusgiant5 (https://discord.gg/wyButjTMhM)
+-- Decompiled on 2025-03-21 21:07:48
+-- Luau version 6, Types version 3
+-- Time taken: 0.000356 seconds
+
+local JestConfigs = require(game:GetService("CorePackages").Workspace.Packages.JestConfigs)
+return {
+	displayName = "InGameMenuJest3";
+	testMatch = {"**/*.test"};
+	setupFilesAfterEnv = {JestConfigs.setupFiles.UIBloxInitializer, JestConfigs.setupFiles.createPromiseRejectionHandler()};
+}
