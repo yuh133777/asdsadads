@@ -1,0 +1,163 @@
+-- Decompiler will be improved VERY SOON!
+-- Decompiled with Konstant V2.1, a fast Luau decompiler made in Luau by plusgiant5 (https://discord.gg/wyButjTMhM)
+-- Decompiled on 2025-03-21 21:48:33
+-- Luau version 6, Types version 3
+-- Time taken: 0.002942 seconds
+
+local CorePackages = game:GetService("CorePackages")
+local game_DefineFastFlag_result1_upvr = game:DefineFastFlag("InspectAndBuyTelemetry", false)
+local tbl_2_upvr = {
+	SEND_EVENT_DEFERRED = 0;
+	SEND_EVENT_IMMEDIATELY = 1;
+	SEND_ROBLOX_TELEMETRY_EVENT = 2;
+}
+local module_upvr = {}
+module_upvr.__index = module_upvr
+function module_upvr.__tostring() -- Line 28
+	return "Service(Analytics)"
+end
+local EventStreamReporter_upvr = require(CorePackages.Workspace.Packages.TelemetryService).EventStreamReporter
+local default_upvr = require(CorePackages.Workspace.Packages.LoggingProtocol).default
+local EventStream_upvr = require(CorePackages.Workspace.Packages.Analytics).AnalyticsReporters.EventStream
+local RbxAnalyticsService_upvr = game:GetService("RbxAnalyticsService")
+local Players_upvr = game:GetService("Players")
+local UserInputService_upvr = game:GetService("UserInputService")
+local HttpService_upvr = game:GetService("HttpService")
+local RunService_upvr = game:GetService("RunService")
+function module_upvr.new(arg1, arg2) -- Line 34
+	--[[ Upvalues[10]:
+		[1]: module_upvr (readonly)
+		[2]: game_DefineFastFlag_result1_upvr (readonly)
+		[3]: EventStreamReporter_upvr (readonly)
+		[4]: default_upvr (readonly)
+		[5]: EventStream_upvr (readonly)
+		[6]: RbxAnalyticsService_upvr (readonly)
+		[7]: Players_upvr (readonly)
+		[8]: UserInputService_upvr (readonly)
+		[9]: HttpService_upvr (readonly)
+		[10]: RunService_upvr (readonly)
+	]]
+	local module_upvr_2 = {}
+	setmetatable(module_upvr_2, module_upvr)
+	if game_DefineFastFlag_result1_upvr then
+		module_upvr_2.eventStream = EventStreamReporter_upvr.new(default_upvr)
+	else
+		module_upvr_2.eventStream = EventStream_upvr.new(RbxAnalyticsService_upvr)
+	end
+	module_upvr_2.pid = tostring(game.PlaceId)
+	module_upvr_2.uid = tostring(Players_upvr.LocalPlayer.UserId)
+	module_upvr_2.feature = "inspectAndBuy"
+	module_upvr_2.inspecteeUid = arg1
+	module_upvr_2.ctx = arg2
+	function module_upvr_2.reportOpenInspectMenu() -- Line 51
+		--[[ Upvalues[1]:
+			[1]: module_upvr_2 (readonly)
+		]]
+		module_upvr_2:report("inspectUser", {})
+	end
+	function module_upvr_2.reportTryOnButtonClicked(arg1_2, arg2_2) -- Line 58
+		--[[ Upvalues[1]:
+			[1]: module_upvr_2 (readonly)
+		]]
+		local tbl_4 = {}
+		tbl_4.itemType = arg1_2
+		tbl_4.itemID = arg2_2
+		module_upvr_2:report("tryItem", tbl_4)
+	end
+	function module_upvr_2.reportFavoriteItem(arg1_3, arg2_3, arg3, arg4, arg5, arg6) -- Line 68
+		--[[ Upvalues[1]:
+			[1]: module_upvr_2 (readonly)
+		]]
+		local tbl = {}
+		tbl.itemType = arg1_3
+		tbl.itemID = arg2_3
+		tbl.favorite = arg3
+		tbl.success = arg4
+		tbl.failureReason = arg5
+		tbl.favoriteCount = arg6
+		module_upvr_2:report("favoriteItem", tbl)
+	end
+	function module_upvr_2.reportPurchaseAttempt(arg1_4, arg2_4) -- Line 82
+		--[[ Upvalues[1]:
+			[1]: module_upvr_2 (readonly)
+		]]
+		local tbl_3 = {}
+		tbl_3.itemType = arg1_4
+		tbl_3.itemID = arg2_4
+		module_upvr_2:report("purchaseAttemptItem", tbl_3)
+	end
+	function module_upvr_2.reportPurchaseSuccess(arg1_5, arg2_5) -- Line 92
+		--[[ Upvalues[1]:
+			[1]: module_upvr_2 (readonly)
+		]]
+		local tbl_7 = {}
+		tbl_7.itemType = arg1_5
+		tbl_7.itemID = arg2_5
+		module_upvr_2:report("purchaseSuccessItem", tbl_7)
+	end
+	function module_upvr_2.reportItemDetailPageOpened(arg1_6, arg2_6) -- Line 106
+		--[[ Upvalues[1]:
+			[1]: module_upvr_2 (readonly)
+		]]
+		local tbl_6 = {}
+		tbl_6.itemType = arg1_6
+		tbl_6.itemID = arg2_6
+		module_upvr_2:report("itemDetailView", tbl_6)
+	end
+	module_upvr_2.platformStr = (function() -- Line 116, Named "getPlatformString"
+		--[[ Upvalues[2]:
+			[1]: UserInputService_upvr (copied, readonly)
+			[2]: HttpService_upvr (copied, readonly)
+		]]
+		-- KONSTANTERROR: [0] 1. Error Block 1 start (CF ANALYSIS FAILED)
+		local any_GetPlatform_result1 = UserInputService_upvr:GetPlatform()
+		-- KONSTANTERROR: [0] 1. Error Block 1 end (CF ANALYSIS FAILED)
+		-- KONSTANTERROR: [9] 7. Error Block 2 start (CF ANALYSIS FAILED)
+		do
+			return "Windows"
+		end
+		-- KONSTANTERROR: [9] 7. Error Block 2 end (CF ANALYSIS FAILED)
+		-- KONSTANTERROR: [11] 9. Error Block 3 start (CF ANALYSIS FAILED)
+		-- KONSTANTERROR: [11] 9. Error Block 3 end (CF ANALYSIS FAILED)
+	end)()
+	function module_upvr_2.sendCounter(arg1_7) -- Line 149
+		--[[ Upvalues[3]:
+			[1]: RunService_upvr (copied, readonly)
+			[2]: module_upvr_2 (readonly)
+			[3]: RbxAnalyticsService_upvr (copied, readonly)
+		]]
+		if RunService_upvr:IsStudio() then
+		else
+			RbxAnalyticsService_upvr:ReportCounter("inspectAndBuy"..'_'..module_upvr_2.platformStr..'_'..arg1_7)
+		end
+	end
+	return module_upvr_2
+end
+local Cryo_upvr = require(CorePackages.Packages.Cryo)
+function module_upvr.report(arg1, arg2, arg3) -- Line 161
+	--[[ Upvalues[3]:
+		[1]: game_DefineFastFlag_result1_upvr (readonly)
+		[2]: tbl_2_upvr (readonly)
+		[3]: Cryo_upvr (readonly)
+	]]
+	local tbl_5 = {
+		pid = arg1.pid;
+		uid = arg1.uid;
+		inspecteeUid = arg1.inspecteeUid;
+	}
+	local var23 = "inspectAndBuy"
+	tbl_5.feature = var23
+	if game_DefineFastFlag_result1_upvr then
+		var23 = tbl_2_upvr.SEND_ROBLOX_TELEMETRY_EVENT
+	else
+		var23 = nil
+	end
+	tbl_5.event_sender_api = var23
+	local any_join_result1 = Cryo_upvr.Dictionary.join(tbl_5, arg3)
+	if game_DefineFastFlag_result1_upvr then
+		arg1.eventStream:sendTelemetryEvent(arg1.ctx, arg2, any_join_result1)
+	else
+		arg1.eventStream:sendEventDeferred(arg1.ctx, arg2, any_join_result1)
+	end
+end
+return module_upvr

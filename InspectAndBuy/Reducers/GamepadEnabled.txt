@@ -1,0 +1,11 @@
+-- Decompiler will be improved VERY SOON!
+-- Decompiled with Konstant V2.1, a fast Luau decompiler made in Luau by plusgiant5 (https://discord.gg/wyButjTMhM)
+-- Decompiled on 2025-03-21 21:44:52
+-- Luau version 6, Types version 3
+-- Time taken: 0.000410 seconds
+
+return require(game:GetService("CorePackages").Packages.Rodux).createReducer(false, {
+	[require(script.Parent.Parent.Actions.SetGamepadEnabled).name] = function(arg1, arg2) -- Line 8
+		return arg2.gamepadEnabled
+	end;
+})

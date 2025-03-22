@@ -1,0 +1,105 @@
+-- Decompiler will be improved VERY SOON!
+-- Decompiled with Konstant V2.1, a fast Luau decompiler made in Luau by plusgiant5 (https://discord.gg/wyButjTMhM)
+-- Decompiled on 2025-03-21 21:40:26
+-- Luau version 6, Types version 3
+-- Time taken: 0.001764 seconds
+
+local CorePackages = game:GetService("CorePackages")
+local ReactFocusNavigation_upvr = require(CorePackages.Packages.ReactFocusNavigation)
+local FocusNavigationUtils = require(CorePackages.Workspace.Packages.FocusNavigationUtils)
+local Parent = script.Parent.Parent
+local OverlayComponents_upvr = require(Parent.Components.OverlayComponents)
+local function selectOverlayComponent_upvr(arg1) -- Line 34, Named "selectOverlayComponent"
+	--[[ Upvalues[1]:
+		[1]: OverlayComponents_upvr (readonly)
+	]]
+	return OverlayComponents_upvr[arg1.overlay.overlay]
+end
+local function selectOverlayProps_upvr(arg1) -- Line 38, Named "selectOverlayProps"
+	return arg1.overlay.overlayProps
+end
+local useSelector_upvr = require(CorePackages.Workspace.Packages.RoactUtils).Hooks.RoactRodux.useSelector
+local useStyle_upvr = require(CorePackages.Packages.UIBlox).Core.Style.useStyle
+local React_upvr = require(CorePackages.Packages.React)
+local any_new_result1_upvr = ReactFocusNavigation_upvr.FocusNavigationService.new(ReactFocusNavigation_upvr.EngineInterface.CoreGui)
+local Provider_upvr = FocusNavigationUtils.FocusNavigableSurfaceRegistry.Provider
+local FFlagCSFocusWrapperRefactor_upvr = require(CorePackages.Workspace.Packages.SharedFlags).FFlagCSFocusWrapperRefactor
+local FocusRoot_upvr = FocusNavigationUtils.FocusRoot
+local FocusNavigationCoreScriptsWrapper_upvr = FocusNavigationUtils.FocusNavigationCoreScriptsWrapper
+local FocusNavigableSurfaceIdentifierEnum_upvr = FocusNavigationUtils.FocusNavigableSurfaceIdentifierEnum
+local Colors_upvr = require(Parent.Colors)
+return function(arg1) -- Line 42, Named "Overlay"
+	--[[ Upvalues[13]:
+		[1]: useSelector_upvr (readonly)
+		[2]: selectOverlayComponent_upvr (readonly)
+		[3]: selectOverlayProps_upvr (readonly)
+		[4]: useStyle_upvr (readonly)
+		[5]: React_upvr (readonly)
+		[6]: ReactFocusNavigation_upvr (readonly)
+		[7]: any_new_result1_upvr (readonly)
+		[8]: Provider_upvr (readonly)
+		[9]: FFlagCSFocusWrapperRefactor_upvr (readonly)
+		[10]: FocusRoot_upvr (readonly)
+		[11]: FocusNavigationCoreScriptsWrapper_upvr (readonly)
+		[12]: FocusNavigableSurfaceIdentifierEnum_upvr (readonly)
+		[13]: Colors_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 26 start (CF ANALYSIS FAILED)
+	local var6_result1 = useSelector_upvr(selectOverlayComponent_upvr)
+	local module = {}
+	local tbl = {}
+	local var20 = React_upvr
+	local var21
+	if FFlagCSFocusWrapperRefactor_upvr then
+		var20 = FocusRoot_upvr
+	else
+		var20 = FocusNavigationCoreScriptsWrapper_upvr
+	end
+	if FFlagCSFocusWrapperRefactor_upvr then
+		local tbl_5 = {
+			surfaceIdentifier = FocusNavigableSurfaceIdentifierEnum_upvr.CentralOverlay;
+			isIsolated = true;
+			isAutoFocusRoot = true;
+		}
+		-- KONSTANTWARNING: GOTO [59] #47
+	end
+	-- KONSTANTERROR: [0] 1. Error Block 26 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [50] 41. Error Block 21 start (CF ANALYSIS FAILED)
+	local tbl_3 = {}
+	local tbl_2 = {}
+	var21 = useStyle_upvr().Tokens.Semantic.Color.Common.Overlay
+	tbl_2.BackgroundTransparency = var21.Transparency
+	var21 = Colors_upvr
+	tbl_2.BackgroundColor3 = var21.Black
+	tbl_2.BorderSizePixel = 0
+	var21 = 1
+	local udim2 = UDim2.fromScale(var21, 1)
+	tbl_2.Size = udim2
+	if var6_result1 == nil then
+		udim2 = false
+	else
+		udim2 = true
+	end
+	tbl_2.Visible = udim2
+	local tbl_4 = {}
+	local function INLINED() -- Internal function, doesn't exist in bytecode
+		var21 = React_upvr.createElement(var6_result1, useSelector_upvr(selectOverlayProps_upvr))
+		return var21
+	end
+	if not var6_result1 or not INLINED() then
+		var21 = nil
+	end
+	tbl_4.Overlay = var21
+	tbl_3.OverlayContainer = React_upvr.createElement("Frame", tbl_2, tbl_4)
+	tbl.FocusNavigationCoreScriptsWrapper = var20.createElement(var20, {
+		selectionGroupName = "InspectAndBuyOverlay";
+		focusNavigableSurfaceIdentifier = FocusNavigableSurfaceIdentifierEnum_upvr.CentralOverlay;
+	}, tbl_3)
+	module.FocusNavigationRegistryProvider = React_upvr.createElement(Provider_upvr, nil, tbl)
+	do
+		return React_upvr.createElement(ReactFocusNavigation_upvr.FocusNavigationContext.Provider, {
+			value = any_new_result1_upvr;
+		}, module)
+	end
+	-- KONSTANTERROR: [50] 41. Error Block 21 end (CF ANALYSIS FAILED)
+end

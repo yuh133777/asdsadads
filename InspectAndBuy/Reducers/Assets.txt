@@ -1,0 +1,69 @@
+-- Decompiler will be improved VERY SOON!
+-- Decompiled with Konstant V2.1, a fast Luau decompiler made in Luau by plusgiant5 (https://discord.gg/wyButjTMhM)
+-- Decompiled on 2025-03-21 21:43:55
+-- Luau version 6, Types version 3
+-- Time taken: 0.001755 seconds
+
+local CorePackages = game:GetService("CorePackages")
+local Cryo_upvr = require(CorePackages.Packages.Cryo)
+local Parent = script.Parent.Parent
+local AssetInfo_upvr = require(Parent.Models.AssetInfo)
+return require(CorePackages.Packages.Rodux).createReducer({}, {
+	[require(Parent.Actions.SetAssets).name] = function(arg1, arg2) -- Line 15
+		--[[ Upvalues[2]:
+			[1]: Cryo_upvr (readonly)
+			[2]: AssetInfo_upvr (readonly)
+		]]
+		local module = {}
+		for _, v in ipairs(arg2.assets) do
+			local var15
+			if v.assetId == nil then
+				var15 = false
+			else
+				var15 = true
+			end
+			assert(var15, "Expected an asset id when setting an asset's information.")
+			var15 = v.assetId
+			local var16 = arg1[var15]
+			if not var16 then
+				var16 = {}
+			end
+			var15 = v.assetId
+			module[var15] = Cryo_upvr.Dictionary.join(var16, v)
+			var15 = module[v.assetId]
+			if var15 then
+				var15 = v.assetId
+				module[var15] = AssetInfo_upvr.getSaleDetailsForCollectibles(module[v.assetId])
+			end
+		end
+		return Cryo_upvr.Dictionary.join(arg1, module)
+	end;
+	[require(Parent.Actions.SetBundlesAssetIsPartOf).name] = function(arg1, arg2) -- Line 37
+		--[[ Upvalues[2]:
+			[1]: AssetInfo_upvr (readonly)
+			[2]: Cryo_upvr (readonly)
+		]]
+		local tostring_result1_2 = tostring(arg2.assetId)
+		local var19 = arg1[tostring_result1_2]
+		if not var19 then
+			var19 = {}
+		end
+		return Cryo_upvr.Dictionary.join(arg1, {
+			[tostring_result1_2] = Cryo_upvr.Dictionary.join(var19, AssetInfo_upvr.fromGetAssetBundles(tostring_result1_2, arg2.bundleIds));
+		})
+	end;
+	[require(Parent.Actions.SetAssetFromBundleInfo).name] = function(arg1, arg2) -- Line 46
+		--[[ Upvalues[2]:
+			[1]: AssetInfo_upvr (readonly)
+			[2]: Cryo_upvr (readonly)
+		]]
+		local tostring_result1 = tostring(arg2.assetId)
+		local var23 = arg1[tostring_result1]
+		if not var23 then
+			var23 = {}
+		end
+		return Cryo_upvr.Dictionary.join(arg1, {
+			[tostring_result1] = Cryo_upvr.Dictionary.join(var23, AssetInfo_upvr.fromBundleInfo(tostring_result1, arg2.bundleInfo));
+		})
+	end;
+})
