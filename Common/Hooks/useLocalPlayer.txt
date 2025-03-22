@@ -1,0 +1,15 @@
+-- Decompiler will be improved VERY SOON!
+-- Decompiled with Konstant V2.1, a fast Luau decompiler made in Luau by plusgiant5 (https://discord.gg/wyButjTMhM)
+-- Decompiled on 2025-03-21 21:23:22
+-- Luau version 6, Types version 3
+-- Time taken: 0.000374 seconds
+
+local useProperty_upvr = require(game:GetService("CorePackages").Workspace.Packages.GuiObjectUtils).useProperty
+local Players_upvr = game:GetService("Players")
+return function() -- Line 5, Named "useLocalPlayer"
+	--[[ Upvalues[2]:
+		[1]: useProperty_upvr (readonly)
+		[2]: Players_upvr (readonly)
+	]]
+	return useProperty_upvr(Players_upvr, "LocalPlayer")
+end
